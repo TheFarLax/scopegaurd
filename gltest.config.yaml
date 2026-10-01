@@ -1,0 +1,25 @@
+# genlayer-test (gltest) configuration for the ScopeGuard integration suite.
+#
+# The local logic suite (tests/test_scope_guard_logic.py) does NOT use this — it
+# runs against a stub with plain pytest. This file is for the on-network suite
+# (tests/test_scope_guard_gltest.py), which needs a reachable network and a
+# funded account. Requires Python 3.12+ and `pip install genlayer-test`.
+#
+# Secrets come from the environment (see .env.example); never commit real keys.
+
+networks:
+  default: localnet
+
+  # Local GenLayer simulator (requires Docker + `genlayer up`).
+  localnet:
+    url: "http://127.0.0.1:4000/api"
+    leader_only: false
+
+  # Hosted Studio network.
+  studionet: {}
+
+  # Bradbury public testnet (chainId 4221).
+  testnet_bradbury:
+    url: "https://rpc-bradbury.genlayer.com"
+    accounts:
+      - "${ACCOUNT_PRIVATE_KEY}"

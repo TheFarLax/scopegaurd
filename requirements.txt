@@ -1,0 +1,13 @@
+# Local logic tests — plain pytest against the bundled genlayer stub.
+# No network, no Docker, no genlayer-test needed. Works on Python 3.10+.
+pytest>=7.0
+
+# --- On-network integration tests + deploy (OPTIONAL) ------------------------
+# The gltest suite (tests/test_scope_guard_gltest.py) and Python-based deploy
+# need the GenLayer client toolchain, which requires Python 3.12+:
+#
+#   genlayer-test==0.1.1     # provides the `gltest` framework
+#
+# It is intentionally NOT pinned as a hard dependency here so the local logic
+# suite installs and runs on Python 3.10. Install it separately on a 3.12+
+# interpreter when you want to run against a real network.
